@@ -1,4 +1,4 @@
-GO_MODULE_USER := github.com/teamkweku/my-grpc-proto/user
+GO_MODULE_USER := github.com/teamkweku/code-odessey-hex-arch-proto/user
 
 .PHONY: clean
 clean:
@@ -14,7 +14,7 @@ endif
 protoc-go:
 	protoc --go_opt=module=${GO_MODULE_USER} --go_out=. \
 	--go-grpc_opt=module=${GO_MODULE_USER} --go-grpc_out=. \
-	./proto/user/*.proto \
+	./proto/user/*.proto
 
 .PHONY: pipeline-init
 pipeline-init:

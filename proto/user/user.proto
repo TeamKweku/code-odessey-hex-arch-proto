@@ -6,6 +6,58 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/teamkweku/code-odessey-hex-arch-proto/proto/user";
 
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message LoginUserRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginUserResponse {
+  User user = 1;
+}
+
+
+message RegisterUserRequest {
+  string username = 1;
+  string email = 2;
+  string password_hash = 3;
+}
+
+message RegisterUserResponse {
+  User user = 1;
+}
+
+
+message UpdateUserRequest {
+    
+  optional string email = 1;
+  optional string password = 2;
+  optional string username = 3;
+  optional string password_hash = 4;
+  optional string role = 5;
+}
+
+message UpdateUserResponse {
+  User user = 1;
+}
+
+
+service UserService {
+  rpc Register(RegisterUserRequest) returns (RegisterUserResponse) {};
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {};
+  rpc Authenticate(LoginUserRequest) returns (LoginUserResponse) {};
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {};
+}
+
+
 message User {
   string id = 1;
   string username = 2;
