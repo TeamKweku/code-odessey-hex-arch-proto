@@ -1,4 +1,4 @@
-GO_MODULE_USER := github.com/teamkweku/code-odessey-hex-arch-proto/user
+GO_MODULE_USER := github.com/teamkweku/code-odessey-hex-arch-proto
 
 .PHONY: clean
 clean:
