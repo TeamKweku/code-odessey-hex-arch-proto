@@ -12,9 +12,13 @@ endif
 
 .PHONY: protoc-go
 protoc-go:
-	protoc --go_opt=module=${GO_MODULE_USER} --go_out=. \
+	protoc --experimental_allow_proto3_optional \
+	--go_opt=module=${GO_MODULE_USER} --go_out=. \
 	--go-grpc_opt=module=${GO_MODULE_USER} --go-grpc_out=. \
 	./proto/user/*.proto
+
+.PHONY: build
+build: clean protoc-go
 
 .PHONY: pipeline-init
 pipeline-init:
