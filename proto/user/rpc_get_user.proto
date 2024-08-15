@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package codeodessey.user;
+
+import "user.proto";
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/teamkweku/code-odessey-hex-arch-proto/proto/user";
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
