@@ -16,6 +16,9 @@ protoc-go:
 	--go-grpc_opt=module=${GO_MODULE_USER} --go-grpc_out=. \
 	./proto/user/*.proto
 
+.PHONY: build
+build: clean protoc-go
+
 .PHONY: pipeline-init
 pipeline-init:
 	sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
