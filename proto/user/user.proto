@@ -4,7 +4,7 @@ package user;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/teamkweku/code-odessey-hex-arch-proto/user";
+option go_package = "github.com/TeamKweku/code-odessey-hex-arch-proto/user";
 
 
 message GetUserRequest {
