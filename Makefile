@@ -1,4 +1,4 @@
-GO_MODULE_USER := github.com/teamkweku/code-odessey-hex-arch-proto
+GO_MODULE := github.com/teamkweku/code-odessey-hex-arch-proto
 
 .PHONY: clean
 clean:
@@ -12,9 +12,8 @@ endif
 
 .PHONY: protoc-go
 protoc-go:
-	protoc --experimental_allow_proto3_optional \
-	--go_opt=module=${GO_MODULE_USER} --go_out=. \
-	--go-grpc_opt=module=${GO_MODULE_USER} --go-grpc_out=. \
+	protoc --go_opt=module=${GO_MODULE} --go_out=. \
+	--go-grpc_opt=module=${GO_MODULE} --go-grpc_out=. \
 	./proto/user/*.proto
 
 .PHONY: build
