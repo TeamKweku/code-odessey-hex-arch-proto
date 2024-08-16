@@ -1,4 +1,4 @@
-GO_MODULE := github.com/Teamkweku/code-odessey-hex-arch-proto
+GO_MODULE := github.com/TeamKweku/code-odessey-hex-arch-proto
 
 .PHONY: clean
 clean:
