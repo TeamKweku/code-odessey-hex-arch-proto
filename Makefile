@@ -11,9 +11,9 @@ else
 endif
 
 .PHONY: protoc-go
-protoc-go:
-	protoc --go_opt=module=${GO_MODULE} --go_out=. \
-	--go-grpc_opt=module=${GO_MODULE} --go-grpc_out=. \
+protoc-go: clean
+	protoc --go_opt=module=${GO_MODULE} --go_out=./protogen/go \
+	--go-grpc_opt=module=${GO_MODULE} --go-grpc_out=./protogen/go \
 	./proto/user/*.proto
 
 .PHONY: build
