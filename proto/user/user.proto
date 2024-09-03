@@ -22,6 +22,7 @@ message LoginUserRequest {
 
 message LoginUserResponse {
   User user = 1;
+  string access_token = 2;
 }
 
 
