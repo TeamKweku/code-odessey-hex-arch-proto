@@ -66,9 +66,9 @@ service UserService {
 
 message User {
   string id = 1;
-  string username = 2;
-  string email = 3;
-  string role = 4;
+  optional string username = 2;
+  optional string email = 3;
+  optional string role = 4;
   google.protobuf.Timestamp password_changed_at = 5;
   google.protobuf.Timestamp created_at = 6;
   google.protobuf.Timestamp updated_at = 7;
