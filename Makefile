@@ -1,5 +1,8 @@
 GO_MODULE := github.com/TeamKweku/code-odessey-hex-arch-proto
 
+.PHONY: all
+all: build
+
 .PHONY: clean
 clean:
 ifeq ($(OS), Windows_NT)
@@ -21,9 +24,13 @@ build: clean protoc-go
 
 .PHONY: pipeline-init
 pipeline-init:
-	sudo apt-get install -y protobuf-compiler
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
 .PHONY: pipeline-build
 pipeline-build: pipeline-init build
+
+# Add this new target
+.PHONY: test
+test:
+	go test ./... -v
