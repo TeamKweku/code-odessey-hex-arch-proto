@@ -34,6 +34,4 @@ jobs:
         shell: bash
         run: |
           make pipeline-build
-      - name: Update go.mod
-        run: |
           go mod tidy
