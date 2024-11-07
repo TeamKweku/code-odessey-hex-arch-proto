@@ -3,7 +3,6 @@ syntax = "proto3";
 package session;
 
 import "google/protobuf/timestamp.proto";
-import "proto/user/user.proto";
 
 option go_package = "github.com/TeamKweku/code-odessey-hex-arch-proto/session";
 
@@ -14,7 +13,7 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  user.User user = 1;
+  User user = 1;
   string access_token = 2;
   string session_id = 3;
   string refresh_token = 4;
@@ -47,7 +46,7 @@ message ValidateTokenRequest {
 
 message ValidateTokenResponse {
   bool valid = 1;
-  user.User user = 2;
+  User user = 2;
 }
 
 message RevokeSessionRequest {
@@ -99,4 +98,15 @@ service SessionService {
   rpc RevokeSession(RevokeSessionRequest) returns (RevokeSessionResponse) {}
   rpc GetSession(GetSessionRequest) returns (GetSessionResponse) {}
   rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse) {}
+}
+
+// including user message to avoid inter-depency error with the generated files
+message User {
+  string id = 1;
+  string username = 2;
+  string email = 3;
+  string role = 4;
+  google.protobuf.Timestamp password_changed_at = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
 }
