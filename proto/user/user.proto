@@ -14,19 +14,19 @@ message GetUserResponse {
   User user = 1;
 }
 
-message LoginUserRequest {
-  string email = 1;
-  string password = 2;
-}
-
-message LoginUserResponse {
-  User user = 1;
-  string access_token = 2;
-  string session_id = 3;
-  string refresh_token = 4;
-  google.protobuf.Timestamp access_token_expires_at = 5;
-  google.protobuf.Timestamp refresh_token_expires_at = 6;
-}
+// message LoginUserRequest {
+//   string email = 1;
+//   string password = 2;
+// }
+//
+// message LoginUserResponse {
+//   User user = 1;
+//   string access_token = 2;
+//   string session_id = 3;
+//   string refresh_token = 4;
+//   google.protobuf.Timestamp access_token_expires_at = 5;
+//   google.protobuf.Timestamp refresh_token_expires_at = 6;
+// }
 
 message RegisterUserRequest {
   string username = 1;
@@ -61,7 +61,7 @@ message DeleteUserResponse {
 service UserService {
   rpc Register(RegisterUserRequest) returns (RegisterUserResponse) {}
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
-  rpc Authenticate(LoginUserRequest) returns (LoginUserResponse) {}
+  // rpc Authenticate(LoginUserRequest) returns (LoginUserResponse) {}
   rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
   rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
 }
