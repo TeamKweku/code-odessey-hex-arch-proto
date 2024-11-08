@@ -6,49 +6,6 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/TeamKweku/code-odessey-hex-arch-proto/session";
 
-// Authenticate and Session Management
-message LoginRequest {
-  string email = 1;
-  string password = 2;
-}
-
-message LoginResponse {
-  User user = 1;
-  string access_token = 2;
-  string session_id = 3;
-  string refresh_token = 4;
-  google.protobuf.Timestamp access_token_expires_at = 5;
-  google.protobuf.Timestamp refresh_token_expires_at = 6;
-}
-
-message LogoutRequest {
-  string session_id = 1;
-}
-
-message LogoutResponse {
-  bool success = 1;
-}
-
-message RefreshTokenRequest {
-  string refresh_token = 1;
-}
-
-message RefreshTokenResponse {
-  string access_token = 1;
-  string refresh_token = 2;
-  google.protobuf.Timestamp access_token_expires_at = 3;
-  google.protobuf.Timestamp refresh_token_expires_at = 4;
-}
-
-message ValidateTokenRequest {
-  string access_token = 1;
-}
-
-message ValidateTokenResponse {
-  bool valid = 1;
-  User user = 2;
-}
-
 message RevokeSessionRequest {
   string session_id = 1;
 }
@@ -91,22 +48,7 @@ message Session {
 
 // Session service for auth and session management
 service SessionService {
-  rpc Login(LoginRequest) returns (LoginResponse) {}
-  rpc Logout(LogoutRequest) returns (LogoutResponse) {}
-  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse) {}
-  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse) {}
   rpc RevokeSession(RevokeSessionRequest) returns (RevokeSessionResponse) {}
   rpc GetSession(GetSessionRequest) returns (GetSessionResponse) {}
   rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse) {}
-}
-
-// including user message to avoid inter-depency error with the generated files
-message User {
-  string id = 1;
-  string username = 2;
-  string email = 3;
-  string role = 4;
-  google.protobuf.Timestamp password_changed_at = 5;
-  google.protobuf.Timestamp created_at = 6;
-  google.protobuf.Timestamp updated_at = 7;
 }
